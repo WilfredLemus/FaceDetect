@@ -1,0 +1,34 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Nuevo Registro</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-list no-line>
+    <ion-item>
+      <ion-input type="text" placeholder="Username" [(ngModel)]="user.username"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="text" placeholder="Email" [(ngModel)]="user.email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="file" placeholder="Image" [(ngModel)]="user.imagen"></ion-input>
+    </ion-item>
+    <ion-item>
+      <button ion-button block color="light" (click)="TakePhoto()">Tomar Foto</button>
+    </ion-item>
+    <button ion-button block color="light" (click)="Signup()">Guardar</button>
+  </ion-list>
+
+  <img src="{{ base64Image }}">
+  <br>
+  <span>
+    {{ base64Image }}
+  </span>
+
+</ion-content>
