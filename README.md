@@ -1,26 +1,40 @@
-This is a starter template for [Ionic](http://ionicframework.com/docs/) projects.
+--
+# FaceDetect
+Detect Face and analize with service cognitives
 
-## How to use this template
+- Ionic
+- Angular
+- Firebase
+Comming soon..
 
-*This template does not work on its own*. The shared files for each starter are found in the [ionic2-app-base repo](https://github.com/ionic-team/ionic2-app-base).
+## Config & Start
+Comming soon..
+<!-- 1. `npm install``
+2. Create folder environments and file environment.ts
+3. Add Firebase Config in file environment.ts
 
-To use this template, either create a new ionic project using the ionic node.js utility, or copy the files from this repository into the [Starter App Base](https://github.com/ionic-team/ionic2-app-base).
+  example:
+  ```
+  export const environment = {
+    production: false,
 
-### With the Ionic CLI:
+    firebaseConfig: {
+      apiKey: "example",
+      authDomain: "example",
+      databaseURL: "example",
+      projectId: "example",
+      storageBucket: "example",
+      messagingSenderId: "example"
+    }
+  }
+  ```
 
-Take the name after `ionic2-starter-`, and that is the name of the template to be used when using the `ionic start` command below:
+4. Run `ng serve` -->
 
-```bash
-$ sudo npm install -g ionic cordova
-$ ionic start myTabs tabs
-```
 
-Then, to run it, cd into `myTabs` and run:
+## Video Tutorial example
+Comming soon..
 
-```bash
-$ ionic cordova platform add ios
-$ ionic cordova run ios
-```
-
-Substitute ios for android if not on a Mac.
-
+## Screenshot
+Comming soon..
+<!-- <img src="screenshot/screen1.png"  /> -->
