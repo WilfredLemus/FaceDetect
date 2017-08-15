@@ -1,5 +1,8 @@
-export interface user {
-  username?: string;
+export class UserData {
+  $key: string;
+  username: string;
+  name: string;
   email: string;
-  image: string;
+  imagenURL: string;
+  timeStamp: Date = new Date();
 }

@@ -1,0 +1,39 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Agregar Foto</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+   <ion-card>
+    <ion-card-content>
+      <img [src]="srcImage" *ngIf="srcImage" /> 
+      <img class="iconImg" src="assets/img/img-icon.png" *ngIf="!srcImage" /> 
+      <ion-card-title>
+        <b>{{ user.name }}</b>
+      </ion-card-title>
+    </ion-card-content>
+    <ion-item>
+      <ion-icon name='contact' item-start></ion-icon>
+      {{ user.username }}
+    </ion-item>
+    <ion-item>
+      <ion-icon name='mail' item-start></ion-icon>
+      {{ user.email }}
+    </ion-item>
+  </ion-card>
+
+  <button ion-button full large icon-left (click)="TakePhoto()">
+    <ion-icon name="camera"></ion-icon>
+    Tomar Foto
+  </button>
+
+  <button ion-button full large icon-left color="secondary" (click)="SavePhoto()" *ngIf="srcImage">
+    <ion-icon name="archive"></ion-icon>
+    Guardar
+  </button>
+
+</ion-content>

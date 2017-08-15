@@ -1,0 +1,38 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Nuevo Usuario</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-list no-line>
+    <ion-item>
+      <ion-label floating>Nombre</ion-label>
+      <ion-input type="text" [(ngModel)]="NewUser.name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Username</ion-label>
+      <ion-input type="text" [(ngModel)]="NewUser.username"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Email</ion-label>
+      <ion-input type="text" [(ngModel)]="NewUser.email"></ion-input>
+    </ion-item>
+
+    <!-- <ion-item>
+      <button ion-button block color="light" (click)="TakePhoto()">Tomar Foto</button>
+    </ion-item> -->
+    <button ion-button block (click)="saveUser()">Guardar</button>
+  </ion-list>
+
+  <!-- <img src="{{ base64Image }}">
+  <br>
+  <span>
+    {{ base64Image }}
+  </span> -->
+
+</ion-content>

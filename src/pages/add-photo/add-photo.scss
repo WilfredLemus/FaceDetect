@@ -1,0 +1,22 @@
+page-add-photo {
+  ion-card {
+    margin-bottom: 2em;
+  }
+
+  ion-card-content {
+    background-color: #F4F5F8;
+  }
+
+  ion-card .iconImg {
+    width: auto;
+    height: 44px;
+    display: block;
+    margin: 20px auto;
+  }
+
+  ion-card img {
+    padding: 0 0 4px 0;
+    margin: 0 0 4px 0;
+  }
+
+}
