@@ -4,6 +4,7 @@ import { UserData } from '../../models/user';
 import { FirebaseListObservable } from 'angularfire2/database';
 import { UserProvider } from '../../providers/user/user';
 import { NewUsuarioPage } from "../new-usuario/new-usuario";
+import { DetailUserPage } from '../detail-user/detail-user';
 
 @IonicPage()
 @Component({
@@ -63,6 +64,10 @@ export class UsuarioPage {
         position: position
       });
     toast.present();
+  }
+
+  detailUser(keyUser) {
+    this.navCtrl.push(DetailUserPage, { keyUser: keyUser });
   }
 
 }

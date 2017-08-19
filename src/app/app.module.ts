@@ -12,6 +12,8 @@ import { AnalisisPage } from '../pages/analisis/analisis';
 import { TabsPage } from '../pages/tabs/tabs';
 import { NewUsuarioPage } from '../pages/new-usuario/new-usuario';
 import { AddPhotoPage } from '../pages/add-photo/add-photo';
+import { DetailUserPage } from '../pages/detail-user/detail-user';
+import { VerificarRostroPage } from './../pages/verificar-rostro/verificar-rostro';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -24,6 +26,8 @@ import { UploadfilesProvider } from '../providers/uploadfiles/uploadfiles';
 import { UserProvider } from '../providers/user/user';
 import { ApifaceProvider } from '../providers/apiface/apiface';
 
+import { PipesModule } from '../pipes/pipes.module';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -31,14 +35,17 @@ import { ApifaceProvider } from '../providers/apiface/apiface';
     AnalisisPage,
     TabsPage,
     NewUsuarioPage,
-    AddPhotoPage
+    AddPhotoPage,
+    DetailUserPage,
+    VerificarRostroPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     HttpModule,
     AngularFireModule.initializeApp(config.firebaseConfig),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    PipesModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -47,7 +54,9 @@ import { ApifaceProvider } from '../providers/apiface/apiface';
     AnalisisPage,
     TabsPage,
     NewUsuarioPage,
-    AddPhotoPage
+    AddPhotoPage,
+    DetailUserPage,
+    VerificarRostroPage
   ],
   providers: [
     StatusBar,

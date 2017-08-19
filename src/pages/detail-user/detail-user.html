@@ -1,0 +1,49 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Detalle Usuario</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <div class="img-content">
+    <img [src]="user.imagenURL" /> 
+    <b>{{ user.name }}</b>
+  </div>
+  <ion-list>
+    <ion-item>
+      <ion-icon name='contact' item-start></ion-icon>
+      {{ user.username }}
+    </ion-item>
+    <ion-item>
+      <ion-icon name='mail' item-start></ion-icon>
+      {{ user.email }}
+    </ion-item>
+    <ion-item-group>
+      <ion-item-divider color="light">FaceAPI</ion-item-divider>
+      <ion-item>
+        <ion-icon name='time' item-start></ion-icon>
+        Edad
+        <button ion-button outline item-end icon-left>
+          {{ user.FaceApi.faceAttributes.age | number: '1.0-0'}} años
+        </button>
+      </ion-item>
+      <ion-item>
+        <ion-icon name='{{ user.FaceApi.faceAttributes.gender }}' item-start></ion-icon>
+        Sexo
+        <button ion-button outline item-end icon-left>
+          {{ user.FaceApi.faceAttributes.gender | sexo }}
+        </button>
+      </ion-item>
+    </ion-item-group>
+  </ion-list>
+  <div padding>
+    <button ion-button full large icon-left (click)="TakePhoto()">
+      <ion-icon name="happy"></ion-icon>
+      Verificar Rostro
+    </button>
+  </div>
+
+</ion-content>
