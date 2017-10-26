@@ -35,4 +35,4 @@ export const config = {
 4. Correr el servidor ``` ionic serve ``` , puedes [ver la documentacion de ionic](http://ionicframework.com/docs/cli/) para mas comando.
 
 ## Video
-[![FaceDetect](https://i.ytimg.com/vi/e3OM3bc9iW8/hqdefault.jpg)](https://youtu.be/DbBc5W9Mjyo "FaceDetect Video")
+[![FaceDetect](https://i.ytimg.com/vi/e3OM3bc9iW8/hqdefault.jpg)](https://youtu.be/e3OM3bc9iW8 "FaceDetect Video")
