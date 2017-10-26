@@ -4,6 +4,7 @@ import { AddPhotoPage } from '../add-photo/add-photo';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { UserData } from '../../models/user';
 import { UserProvider } from '../../providers/user/user';
+import { ApifaceProvider } from './../../providers/apiface/apiface';
 
 @IonicPage()
 @Component({
@@ -18,7 +19,8 @@ export class NewUsuarioPage {
               public navParams: NavParams,
               public toastCtrl: ToastController,
               private camera: Camera,
-              private userProvider: UserProvider) {
+              private userProvider: UserProvider,
+              private apiFace: ApifaceProvider,) {
   }
 
   ionViewDidLoad() {
@@ -28,12 +30,17 @@ export class NewUsuarioPage {
   saveUser() {
     let keyUser: string;
     keyUser = this.userProvider.createUser(this.NewUser);
+
+    let personGroupId = keyUser + this.NewUser.name.replace(/\s/g,'');
+    this.userProvider.updateUser(keyUser, {personGroupId: personGroupId.toLowerCase()})
+    this.apiFace.createGroup(personGroupId, this.NewUser.name);
+    // console.log(resp);
       // .then(user => {
       //   keyUser = user.key;
       //   console.log(user);
       // });
     console.log(keyUser);
-    this.showToast('Usuario Creado', 'top');
+    this.showToast('Usuario Creado', 'top');    
     // Add page upload image
     this.navCtrl.push(AddPhotoPage, { keyUser: keyUser })
   }

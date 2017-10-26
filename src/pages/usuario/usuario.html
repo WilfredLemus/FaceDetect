@@ -8,7 +8,6 @@
 
 <ion-content>
   <div class="spinner" *ngIf="loadding"></div>
-
   <ion-list>
     <ion-item-sliding #item *ngFor="let user of users | async">
       <button ion-item (tap)="detailUser(user.$key)">
@@ -28,6 +27,8 @@
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>
+
+  <!-- <button ion-button (click)="preCamera()">CAMERA</button> -->
 
   <ion-fab bottom right>
     <button ion-fab (tap)="NewUsuario()" ><ion-icon name="add"></ion-icon></button>

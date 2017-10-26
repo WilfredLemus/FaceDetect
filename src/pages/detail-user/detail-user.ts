@@ -1,5 +1,6 @@
+import { VerificarRostroPage } from './../verificar-rostro/verificar-rostro';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { UserData } from '../../models/user';
 import { UserProvider } from '../../providers/user/user';
 
@@ -11,19 +12,26 @@ import { UserProvider } from '../../providers/user/user';
 export class DetailUserPage {
   keyUser: string;
   user: UserData;
+  verifyState: boolean = false;
 
-  constructor(public navCtrl: NavController, 
+  constructor(public navCtrl: NavController,
               public navParams: NavParams,
+              public viewCtrl: ViewController,
               private userProvider: UserProvider,) {
     this.keyUser = this.navParams.get('keyUser');
+    this.verifyState = this.navParams.get('verifyState');
     this.userProvider.getUser(this.keyUser)
       .subscribe(user => {
         this.user = user;
       });
   }
 
-  ionViewDidLoad() {
-
+  verifyFace() {
+    this.navCtrl.push(VerificarRostroPage, { keyUser: this.keyUser })
+    .then(() => {
+      const index = this.viewCtrl.index;
+      this.navCtrl.remove(index);
+    });
   }
 
 }

@@ -25,7 +25,7 @@ export class AddPhotoPage {
   keyUser: string;
   user: UserData;
   srcImage: any;
-  blobimg: any;
+  srcImage64: any;
   UploadFile: Upload;
   fileTransfer: FileTransferObject;
 
@@ -91,7 +91,7 @@ export class AddPhotoPage {
 
     loading.present();
     this.getFileContentAsBase64(this.srcImage, (base64Image) => {
-
+      this.srcImage64 = base64Image;
       this.uploadService.processUpload(this.user.$key, base64Image, this.user.username + new Date())
         .then(() => {
           loading.dismiss();

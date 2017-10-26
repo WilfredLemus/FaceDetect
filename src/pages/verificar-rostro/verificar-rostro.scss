@@ -1,3 +1,43 @@
 page-verificar-rostro {
 
+  .img-content {
+    display: inline-flex;
+    height: 180px;
+    width: 100%;
+    background-color: #5C97FF;
+
+    img {
+      border: 1px solid #488AFF;
+      height: 180px;
+      padding: 0;
+      position: absolute;
+      opacity: 0.9;
+
+    }
+
+    img:first-child {
+      padding-left: 50%;
+    }
+
+    ion-icon {
+      color: #488AFF;
+      font-size: 120px;
+      position: relative;
+      padding-left: 128px;
+      padding-top: 0.2em;
+    }
+  }
+
+  .not-img {
+    margin: 30px 34vw;
+  }
+
+  .check-img {
+
+  }
+
+  ion-badge {
+    font-size: 1.5em;
+  }
+
 }

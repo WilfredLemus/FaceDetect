@@ -1,18 +1,28 @@
-<!--
-  Generated template for the VerificarRostroPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar>
-    <ion-title>VerificarRostro</ion-title>
+    <ion-title>Verificar Usuario</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
+  <div class="img-content">
+    <img [src]="base64" *ngIf="base64"/>
+    <img src="assets/img/avatar.png" *ngIf="!base64" />
+    <img [src]="user.imagenURL" />
+    <!-- <img [src]="user.imagenURL" /> -->
+    <ion-icon name="git-compare"></ion-icon>
+  </div>
+
+   <div text-center *ngIf="!Access && analizado">
+    <img src="assets/img/equis.png" class="not-img" height="120"/>
+    <ion-badge color="danger">Verificacion Incorrecta!</ion-badge>
+  </div>
+  <div text-center *ngIf="Access && analizado">
+    <img src="assets/img/check-success.gif" class="check-img" />
+    <ion-badge color="secondary">Verificado!</ion-badge>
+  </div>
 
 </ion-content>

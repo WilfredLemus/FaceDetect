@@ -27,6 +27,7 @@ import { UserProvider } from '../providers/user/user';
 import { ApifaceProvider } from '../providers/apiface/apiface';
 
 import { PipesModule } from '../pipes/pipes.module';
+import { VerificationProvider } from '../providers/verification/verification';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import { PipesModule } from '../pipes/pipes.module';
     FileTransfer,
     UploadfilesProvider,
     UserProvider,
-    ApifaceProvider
+    ApifaceProvider,
+    VerificationProvider
   ]
 })
 export class AppModule {}

@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
-// import { Upload } from './../interfaces/upload';
-import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
+import { AngularFireDatabase } from 'angularfire2/database';
 import firebase from 'firebase';
-// import { Upload } from '../../models/upload';
 import { UserProvider } from '../user/user';
 import { ApifaceProvider } from './../apiface/apiface';
+import { VerificationProvider } from './../verification/verification';
 
 
 @Injectable()
@@ -16,8 +15,9 @@ export class UploadfilesProvider {
 
   
   constructor(private afDB: AngularFireDatabase, 
-              private userProvider: UserProvider, 
-              private apiFace: ApifaceProvider) { }
+              private userProvider: UserProvider,
+              private apiFace: ApifaceProvider,
+              private verifyProvider: VerificationProvider) { }
 
 
   // Proceso de carga, apiFace y guardar en db
@@ -31,26 +31,44 @@ export class UploadfilesProvider {
       this.updateUserFile(userKey, urlImg);
     })
 
-    // let apiFace = updateUserFile.then(() => {
-    //   console.log("urlIMG: " + urlImg);
-    // })
-
     updateUserFile.then(() => {
       this.apiFaceImg(urlImg)
         .then(dataFace => {
-          console.log("DataFace: " + dataFace)
+          // console.log("DataFace: " + dataFace)
           this.updateUserFace(userKey, dataFace);
         })
     })
-
-    // let updateUseFace = apiFace.then((dataFace) => {
-    //   console.log("DataFace: " + dataFace)
-    //   this.updateUserFace(userKey, dataFace);
-    // })
-
     return Promise.all([pushUpload, updateUserFile])
   }
 
+  // Proceso de carga de imagen para comparar, apiFace y guardar en db
+  processUploadtoCompare(userKey, uploadFile, nameFile) {
+    var urlImg: any;
+
+    let pushUpload = this.pushUpload(uploadFile, nameFile);
+
+    let updateUserFile = new Promise((resolve, reject) => {     
+      pushUpload.then((urlFile) => {
+        urlImg = urlFile;
+        this.apiFaceImg(urlImg)
+          .then(dataface => {
+            var dataVerify = {
+                  imagenURL: urlImg,
+                  FaceApi: dataface,
+                  compare: false
+                }
+            console.log(dataVerify);
+            let IdVerify = this.verifyProvider.createVerification(userKey, dataVerify);
+            dataVerify[ "IdVerify" ] = IdVerify;
+            resolve(dataVerify);
+          })
+      })
+      .catch(err => reject(err));
+    });
+
+    return Promise.all([pushUpload, updateUserFile])
+  }
+  
   // Se sube el archivo en firebase storage
   private pushUpload(uploadFile, nameFile){
     console.log("Subiendo imagen");
@@ -85,7 +103,6 @@ export class UploadfilesProvider {
 
   // Se guarda la informacion del archivo subido
   private updateUserFile(userKey, urlFile) {
-    console.log("Guardado String Imagen");
     return new Promise((resolve, reject) => {
       this.userProvider.updateUser(userKey, {imagenURL: urlFile})
         .then(() => {
@@ -97,6 +114,8 @@ export class UploadfilesProvider {
         });
     })
   }
+
+
 
   // Se realiza la peticion a Service Congnitive FaceApi
   private apiFaceImg(urlFile) {
@@ -144,6 +163,15 @@ export class UploadfilesProvider {
           console.log(err);
           reject(err);
         });
+    })
+  }
+
+  private createVerify(userKey, data){
+    return new Promise((resolve, reject) => {
+      let keyVerify = this.verifyProvider.createVerification(userKey, data);
+      console.log(keyVerify);
+      resolve(keyVerify);
+      reject("ERROR")
     })
   }
 

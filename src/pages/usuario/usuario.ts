@@ -5,6 +5,7 @@ import { FirebaseListObservable } from 'angularfire2/database';
 import { UserProvider } from '../../providers/user/user';
 import { NewUsuarioPage } from "../new-usuario/new-usuario";
 import { DetailUserPage } from '../detail-user/detail-user';
+import { VerificarRostroPage } from '../verificar-rostro/verificar-rostro';
 
 @IonicPage()
 @Component({
